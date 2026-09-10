@@ -12,10 +12,9 @@ int countAllDigits(int n){
 
 int reverseNumber(int n){
     int revNum=0;
-    while(n>0){
+    while(n!=0){
         int digit = n%10;
-        revNum += digit;
-        revNum *= 10;
+        revNum = revNum*10 + digit;
         n = n/10;
     }
     return revNum/10;
@@ -30,15 +29,35 @@ bool isPalindrome(int n){
         return false;
     }
 }
+
+int GCD(int N1, int N2){
+    int gcd1 = 1;
+    int min=N2;
+    if(N2>N1){min=N1;}
+    while(min>=1){
+        if(N2%min==0 && N1%min==0){
+            gcd1 = min;
+            break;
+        }
+        min--;
+    }
+    return gcd1;
+}
+
+int armStrong(int n){
+
+}
 int main(){
-    int n;
-    cin>>n;
+    // int n;
+    // cin>>n;
     // int count = countAllDigits(n);
     // cout<<count;
 
-    // int revNum = reverseNumber(n);
-    // cout<<revNum<<'\n';
+    int revNum = reverseNumber(-123);
+    cout<<revNum<<'\n';
 
     // bool isPali = isPalindrome(n);
     // cout<<isPali<<'\n';
+    // int gcd = GCD(9,12);
+    // cout<<gcd<<endl;
 }
