@@ -10,19 +10,22 @@ int countAllDigits(int n){
     return count;
 }
 
-int reverseNumber(int n){
-    int revNum=0;
-    while(n!=0){
-        int digit = n%10;
-        revNum = revNum*10 + digit;
-        n = n/10;
+int reverse(int n) {
+    long long revNum = 0;
+    while (n != 0) {
+        int digit = n % 10;
+        revNum = revNum * 10 + digit;
+         n /= 10;
     }
-    return revNum/10;
+    if (revNum > INT_MAX || revNum < INT_MIN)
+        return 0;
+
+    return (int)revNum;
 }
 
 bool isPalindrome(int n){
     int temp = n;
-    if(reverseNumber(temp)==n){
+    if(reverse(temp)==n){
         return true;
     }
     else{
@@ -53,7 +56,7 @@ int main(){
     // int count = countAllDigits(n);
     // cout<<count;
 
-    int revNum = reverseNumber(-123);
+    int revNum = reverse(-123);
     cout<<revNum<<'\n';
 
     // bool isPali = isPalindrome(n);
