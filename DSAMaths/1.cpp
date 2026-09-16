@@ -1,4 +1,7 @@
 #include<iostream>
+#include <cmath>
+#include<vector>
+#include<algorithm>
 using namespace std;
 
 int countAllDigits(int n){
@@ -47,20 +50,66 @@ int GCD(int N1, int N2){
     return gcd1;
 }
 
-int armStrong(int n){
-
+bool armStrong(int n){
+    int numDigits = 0;
+    int k,t = n;
+    int power = n;
+    while(t!=0){
+        numDigits+=1;
+        t = t/10;
+    }
+    int armstrongN = 0; 
+    while(n!=0){
+        int lastDigit = n%10;
+        armstrongN = armstrongN + pow(lastDigit,numDigits);
+        n = n/10;
+    }
+    if(armstrongN==k){return true;}else{return false;}
 }
+
+void printAllDevisors(int n){
+    int temp = n;
+    for(int k=1; k<=n/2; k++){
+        if(n%k==0){
+            cout<<k<<" ";
+        }
+    }
+    cout << n;
+}
+// Optimal Approach
+vector<int> getAllDevisors(int N){
+    vector<int> devisors;
+    for(int i = 1; i*i <= N; i++){
+        if(N%i == 0){
+            devisors.push_back(i);
+            if(i!=N/i){
+                devisors.push_back(N/i);
+            }
+        }
+    }
+    return devisors;
+}
+
 int main(){
-    // int n;
-    // cin>>n;
+    int N;
+    cin>>N;
     // int count = countAllDigits(n);
     // cout<<count;
 
-    int revNum = reverse(-123);
-    cout<<revNum<<'\n';
+    // int revNum = reverse(-123);
+    // cout<<revNum<<'\n';
 
     // bool isPali = isPalindrome(n);
     // cout<<isPali<<'\n';
     // int gcd = GCD(9,12);
     // cout<<gcd<<endl;
+
+    // int t = armStrong(n);
+    // cout<<t<<endl;
+    // printAllDevisors(n);
+    vector<int> devisors = getAllDevisors(N);
+    sort(devisors.begin(), devisors.end());
+    for(auto it : devisors){
+        cout<<it<<" ";
+    }
 }
