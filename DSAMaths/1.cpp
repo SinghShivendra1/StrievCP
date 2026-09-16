@@ -90,6 +90,14 @@ vector<int> getAllDevisors(int N){
     return devisors;
 }
 
+bool Prime(int N){
+    vector<int> devisors = getAllDevisors(N);
+    if(devisors.size()==2){
+        return true;
+    }
+    return false;
+}
+
 int main(){
     int N;
     cin>>N;
@@ -106,10 +114,14 @@ int main(){
 
     // int t = armStrong(n);
     // cout<<t<<endl;
+
     // printAllDevisors(n);
-    vector<int> devisors = getAllDevisors(N);
-    sort(devisors.begin(), devisors.end());
-    for(auto it : devisors){
-        cout<<it<<" ";
-    }
+    // vector<int> devisors = getAllDevisors(N);
+    // sort(devisors.begin(), devisors.end());
+    // for(auto it : devisors){
+    //     cout<<it<<" ";
+    // }
+
+    bool isPrime = Prime(N);
+    cout<<isPrime;
 }
