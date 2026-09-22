@@ -19,6 +19,12 @@ void printN(int n){
     printN(n-1);
     cout<<n<<" ";
 }
+int sumFirstN(int n){
+    if(n==0){
+        return;
+    }
+    
+}
 int main(){
     int N;
     cin>>N;

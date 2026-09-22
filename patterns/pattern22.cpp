@@ -78,3 +78,20 @@ int main(){
 //     }
 // }
 // };
+
+
+
+// void pattern22(int N){
+//     for(int i = 0; i<2*N-1;i++){
+//         int temp = N; int flag=0;
+//         if(i>=N){flag = 2*N-2-i;}else{flag = i;}
+//         for(int j=0; j<2*N-1; j++){
+//             cout<<temp;
+//             if(flag>0){temp = temp-1;flag--;}
+//             // Before i=N, 
+//             if(j>=2*N-2-i && i<N){temp+=1;}
+//             else if(j>=i && i>=N){temp+=1;}
+//         }
+//         cout<<'\n';
+//     }
+// }
