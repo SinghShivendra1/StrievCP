@@ -1,0 +1,1 @@
+A convolutional network assumes that nearby pixels matter together. A recurrent model assumes that the past influences the present. An attention model asks which parts of the input should interact.A graph neural network assumes that relations matter. An equivariant model assumes that some transformations should preserve meaning.
