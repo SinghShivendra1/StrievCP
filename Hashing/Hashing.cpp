@@ -93,24 +93,56 @@ class hashBasics{
         cout<<"Most freq element, smallest when tie: "<<ans;
     }
 
+    // code is not actually finding the second-highest frequency; 
+    // it's looking for an element whose frequency is exactly max - 1
+    // take nums = {4,4,4,5,5,5,6}, here max-1 =2 but there is no 2 here.
+    // int secondMostFrequentElement(vector<int>& nums) {
+    //     unordered_map<int, int>freq;
+    //     int n = nums.size();
+    //     for(int i=0; i<n; i++){
+    //         freq[nums[i]]++;
+    //     }
+    //     int max = 0; int ans=0;
+    //     for(auto it:freq){
+    //         if(it.second>max){
+    //             max = it.second;
+    //         }
+    //     }
+    //     for(int i=0; i<n; i++){
+    //         if(freq[nums[i]] == max-1){
+    //             return nums[i];
+    //         }
+    //     }
+    //     return 0;
+    // }
+
     int secondMostFrequentElement(vector<int>& nums) {
+        // test for elem with freq 45,1,1,1
+        // check for single element
         unordered_map<int, int>freq;
         int n = nums.size();
         for(int i=0; i<n; i++){
             freq[nums[i]]++;
         }
-        int max = 0; int ans=0;
+        int max = 0; int secondMax = 0;
         for(auto it:freq){
             if(it.second>max){
                 max = it.second;
             }
         }
-        for(int i=0; i<n; i++){
-            if(freq[nums[i]] == max-1){
-                return nums[i];
+        for(auto it : freq){
+            if(it.second < max && it.second > secondMax){
+                secondMax = it.second;
             }
         }
-        return 0;
+        if(secondMax==0){return -1;}
+        int ans = INT_MAX;
+        for(auto it:freq){
+            if(it.second == secondMax){
+                ans=min(ans,it.first);
+            }
+        }
+        return ans;
     }
 };
 
@@ -121,7 +153,8 @@ int main(){
     // hash.frequencyCounting(arr, 6);
     // vector<int> arr = {10,2,2,2,2,5,3,3,3,3,4, 14,1};
     // vector<int> arr = {10,3,3,2,2,5,3,2,2,3,4, 14,1};
-    vector<int> arr = {4,4,5,5,5,6};
+    // vector<int> arr = {4,4,4,5,5,5,6};
+    vector<int> arr = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1000,100,10};
     // hash.findDuplicates(arr);
     // hash.firstNonRElement(arr);
     // hash.findHighestFreqEle(arr);
