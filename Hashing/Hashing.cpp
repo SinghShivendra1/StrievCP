@@ -59,9 +59,7 @@ class hashBasics{
         int max = 0;
         int answer = 0;
         for(auto it : freq){
-            if(it.second>max){
-                max = it.second;
-                // answer = it.first;
+            if(it.second>max){max = it.second;// answer = it.first;
             }
         }
         // iterate through arr not unordered map
@@ -73,6 +71,27 @@ class hashBasics{
             }
         }
     }
+
+    // If there is a tie i want smaller element
+    void smallerEleTie(vector<int>& arr){
+        int n = arr.size();
+        unordered_map<int, int> freq;
+        for(int i=0; i<n; i++){
+            freq[arr[i]]++;
+        }
+        int max = 0; int ans=0;
+        for(auto it : freq){
+            if(it.second > max){
+                max = it.second;
+                ans = it.first;
+            }
+            else if(it.first<ans && it.second == max){
+                ans = it.first;
+            }
+        }
+        cout<<"Highest freq: "<<max<<'\n';
+        cout<<"Most freq element, smallest when tie: "<<ans;
+    }
 };
 
 int main(){
@@ -80,9 +99,11 @@ int main(){
     // hash.storeAndRetrieve();
     // vector<int> arr = {1,2,2,3,3,3};
     // hash.frequencyCounting(arr, 6);
-    vector<int> arr = {10,2,2,2,2,5,3,3,3,3,4, 14,1};
+    // vector<int> arr = {10,2,2,2,2,5,3,3,3,3,4, 14,1};
+    vector<int> arr = {10,3,3,2,2,5,3,2,2,3,4, 14,1};
     // hash.findDuplicates(arr);
     // hash.firstNonRElement(arr);
-    hash.findHighestFreqEle(arr);
+    // hash.findHighestFreqEle(arr);
+    hash.smallerEleTie(arr);
     return 0;
 }
