@@ -92,6 +92,26 @@ class hashBasics{
         cout<<"Highest freq: "<<max<<'\n';
         cout<<"Most freq element, smallest when tie: "<<ans;
     }
+
+    int secondMostFrequentElement(vector<int>& nums) {
+        unordered_map<int, int>freq;
+        int n = nums.size();
+        for(int i=0; i<n; i++){
+            freq[nums[i]]++;
+        }
+        int max = 0; int ans=0;
+        for(auto it:freq){
+            if(it.second>max){
+                max = it.second;
+            }
+        }
+        for(int i=0; i<n; i++){
+            if(freq[nums[i]] == max-1){
+                return nums[i];
+            }
+        }
+        return 0;
+    }
 };
 
 int main(){
@@ -100,10 +120,12 @@ int main(){
     // vector<int> arr = {1,2,2,3,3,3};
     // hash.frequencyCounting(arr, 6);
     // vector<int> arr = {10,2,2,2,2,5,3,3,3,3,4, 14,1};
-    vector<int> arr = {10,3,3,2,2,5,3,2,2,3,4, 14,1};
+    // vector<int> arr = {10,3,3,2,2,5,3,2,2,3,4, 14,1};
+    vector<int> arr = {4,4,5,5,5,6};
     // hash.findDuplicates(arr);
     // hash.firstNonRElement(arr);
     // hash.findHighestFreqEle(arr);
-    hash.smallerEleTie(arr);
+    // hash.smallerEleTie(arr);
+    cout<<"Second most frequent: "<<hash.secondMostFrequentElement(arr);
     return 0;
 }
