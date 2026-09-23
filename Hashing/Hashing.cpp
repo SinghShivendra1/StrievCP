@@ -51,13 +51,26 @@ class hashBasics{
             }
         }
     }
-    int findHighestFreqEle(vector<int>& arr){
+    void findHighestFreqEle(vector<int>& arr){
         unordered_map<int, int> freq;
         for(int i=0; i<arr.size(); i++){
             freq[arr[i]]++;
         }
+        int max = 0;
+        int answer = 0;
         for(auto it : freq){
-            
+            if(it.second>max){
+                max = it.second;
+                // answer = it.first;
+            }
+        }
+        // iterate through arr not unordered map
+        for(int i=0; i<arr.size();i++){
+            if(freq[arr[i]] == max){
+                answer = arr[i];
+                cout<<"maxFrequency: "<<answer;
+                return;
+            }
         }
     }
 };
@@ -67,8 +80,9 @@ int main(){
     // hash.storeAndRetrieve();
     // vector<int> arr = {1,2,2,3,3,3};
     // hash.frequencyCounting(arr, 6);
-    vector<int> arr = {10,2,2,5,3,3,3,4, 14,1};
+    vector<int> arr = {10,2,2,2,2,5,3,3,3,3,4, 14,1};
     // hash.findDuplicates(arr);
-    hash.firstNonRElement(arr);
+    // hash.firstNonRElement(arr);
+    hash.findHighestFreqEle(arr);
     return 0;
 }
