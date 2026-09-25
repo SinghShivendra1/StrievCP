@@ -1,7 +1,7 @@
 #include<iostream>
 // #include <cmath>
 #include<vector>
-// #include<algorithm>
+#include<algorithm>
 // #include<unordered_map>
 using namespace std;
 
@@ -16,6 +16,8 @@ class Sorting{
     }
 
     int partition(vector<int>& arr, int start, int end){
+        int randomIndex = start + rand() % (end - start + 1);
+        swap(arr[randomIndex], arr[end]);
         int pivot = arr[end];
         int i = start-1;
         for(int j = start; j<=end-1; j++){
