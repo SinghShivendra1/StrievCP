@@ -16,8 +16,18 @@ class Sorting{
     }
 
     int partition(vector<int>& arr, int start, int end){
-        int randomIndex = start + rand() % (end - start + 1);
-        swap(arr[randomIndex], arr[end]);
+        // int randomIndex = start + rand() % (end - start + 1);
+        // swap(arr[randomIndex], arr[end]);
+
+        // Median Pivot
+        int mid = start + (end - start) / 2;
+        int a = arr[start], b = arr[mid], c = arr[end];
+        int medianIndex;
+        if ((a > b) != (a > c))medianIndex = start;
+        else if ((b > a) != (b > c))medianIndex = mid;
+        else medianIndex = end;
+        swap(arr[medianIndex], arr[end]);
+        
         int pivot = arr[end];
         int i = start-1;
         for(int j = start; j<=end-1; j++){
