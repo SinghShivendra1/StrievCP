@@ -45,6 +45,10 @@ public:
             j--;
         }
     }
+
+    int majorityElement(vector<int>& nums) {
+        
+    }
 };
 
 
@@ -56,8 +60,8 @@ int main(){
     // cout<<"Array Sum: "<<obj.sumArrayElements(arr, 5);
     // cout<<"Total Odd ele in array : "<<obj.countOdd(arr, 5);
     // cout<<"Array is Sorted : "<<obj.arraySortedOrNot(arr, 5);
-    obj.reverseArray(arr, 5);
-    for(auto it:arr){
-        cout<<it<<" ";
-    }
+    // obj.reverseArray(arr, 5);
+    // for(auto it:arr){
+    //     cout<<it<<" ";
+    // }
 }
